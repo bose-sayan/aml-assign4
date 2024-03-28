@@ -1,0 +1,13 @@
+#!/bin/sh
+current_branch=`git branch | grep '*' | sed 's/* //'`
+
+if [ "$current_branch" = "main" ]; then
+    echo "Checking if tests pass before committing to main branch..."
+    python3 test.py
+    if [ $? -eq 0 ]; then
+        exit 0
+    else
+        echo "Tests failed. Please fix them before committing."
+        exit 1
+    fi
+fi

@@ -21,7 +21,7 @@ class TestDocker(unittest.TestCase):
             ]
         )
         # Wait for the Docker container to start
-        time.sleep(40)
+        time.sleep(30)
         # Sends a request to the Flask app running in the Docker container
         response = requests.post(
             "http://localhost:5000/score", json={"text": "Free iPhone!"}
@@ -34,7 +34,7 @@ class TestDocker(unittest.TestCase):
         # Check if the prediction is 1 (True) for an obvious spam text
         assert response.json()["prediction"] == 1
         # Close the Docker container
-        subprocess.Popen(["docker", "stop", "spam-detection"])
+        subprocess.Popen(["docker", "stop", "sbose732/spam-detection"])
 
 
 if __name__ == "__main__":
