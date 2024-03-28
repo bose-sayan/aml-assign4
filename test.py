@@ -34,7 +34,7 @@ class TestDocker(unittest.TestCase):
         # Check if the prediction is 1 (True) for an obvious spam text
         assert response.json()["prediction"] == 1
         # Close the Docker container
-        subprocess.Popen(["docker", "stop", "sbose732/spam-detection"])
+        subprocess.Popen(["docker", "stop", "spam-detection"])
 
 
 if __name__ == "__main__":
